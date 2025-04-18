@@ -1,8 +1,5 @@
 version: '3.8'
 services:
-
-  
-
   mongo:
     image: mongo:latest
     container_name: economiza-mongo
@@ -12,19 +9,23 @@ services:
       - mongo_data:/data/db
     networks:
       - economiza-net
-  
+
   adminmongo:
     image: mrvautin/adminmongo
     container_name: economiza-adminmongo
     ports:
       - "1234:1234"
     environment:
-      - HOST=0.0.0.0
+      - HOST=0.0.0.0                   # faz o AdminMongo escutar em todas as interfaces
+      - CONNECTIONS__0__NAME=local    # nome amigável da conexão
+      - CONNECTIONS__0__HOST=mongo    # aqui usa o service name “mongo”
+      - CONNECTIONS__0__PORT=27017
+      - CONNECTIONS__0__DATABASE=economiza
     depends_on:
       - mongo
     networks:
       - economiza-net
-
+  
   api:
     container_name: economiza-api-dev
     build:
