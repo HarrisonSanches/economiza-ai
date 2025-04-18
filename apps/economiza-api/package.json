@@ -1,0 +1,28 @@
+{
+  "name": "@economiza/api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "nest build",
+    "start:dev": "nest start --watch",
+    "dev": "bun run start:dev",
+    "lint": "eslint .",
+    "test": "jest",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@nestjs/common": "latest",
+    "@nestjs/core": "latest",
+    "@nestjs/platform-express": "latest",
+    "mongodb": "latest",
+    "@economiza/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "latest",
+    "@nestjs/schematics": "latest",
+    "@nestjs/testing": "latest",
+    "typescript": "*",
+    "eslint": "latest",
+    "jest": "latest"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@economiza/app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "bun run build:web",
+    "build:web": "echo \"Add your React web build script here\"",
+    "dev": "echo \"Add your React dev script here\"",
+    "lint": "eslint .",
+    "test": "jest",
+    "clean": "rm -rf dist build .next .expo"
+  },
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest",
+    "@economiza/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "eslint": "latest",
+    "jest": "latest"
+  }
+}

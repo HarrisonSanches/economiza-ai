@@ -1,0 +1,16 @@
+{
+  "name": "@economiza/notifications",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo \"Placeholder for notifications service\"",
+    "build": "echo \"Placeholder build script\"",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@economiza/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "*"
+  }
+}

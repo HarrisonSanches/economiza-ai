@@ -1,0 +1,71 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:latest
+    container_name: economiza-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - economiza-net
+
+  api:
+    container_name: economiza-api-dev
+    build:
+      context: .
+      dockerfile: apps/economiza-api/Dockerfile
+      target: development
+    volumes:
+      - ./apps/economiza-api:/usr/src/app/apps/economiza-api
+      - ./packages/economiza-shared:/usr/src/app/packages/economiza-shared
+      - /usr/src/app/node_modules
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mongo
+    environment:
+      - DATABASE_URL=mongodb://mongo:27017/economiza
+    networks:
+      - economiza-net
+    command: bun run dev
+
+  app:
+    container_name: economiza-app-dev
+    build:
+      context: .
+      dockerfile: apps/economiza-app/Dockerfile
+      target: development
+    volumes:
+      - ./apps/economiza-app:/usr/src/app/apps/economiza-app
+      - ./packages/economiza-shared:/usr/src/app/packages/economiza-shared
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+    networks:
+      - economiza-net
+    command: bun run dev
+
+  notifications:
+    container_name: economiza-notifications-dev
+    build:
+      context: .
+      dockerfile: apps/economiza-notifications/Dockerfile
+    volumes:
+      - ./apps/economiza-notifications:/usr/src/app/apps/economiza-notifications
+      - ./packages/economiza-shared:/usr/src/app/packages/economiza-shared
+      - /usr/src/app/node_modules
+    networks:
+      - economiza-net
+    command: bun run dev
+
+networks:
+  economiza-net:
+    driver: bridge
+
+volumes:
+  mongo_data:
