@@ -46,4 +46,12 @@ export class AuthService {
     const accessToken = await this.jwtService.signAsync(payload);
     return { accessToken, user };
   }
+  async loginWithGoogle(user: any) {
+    if (!user) {
+      throw new UnauthorizedException("No user from Google");
+    }
+    const payload = { sub: user.id, email: user.email, roles: user.roles };
+    const accessToken = await this.jwtService.signAsync(payload);
+    return { accessToken, user };
+  }
 }

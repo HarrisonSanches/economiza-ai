@@ -104,4 +104,37 @@ export class UsersService {
       updatedAt: doc.updatedAt,
     };
   }
+  async findOrCreateGoogleUser(userData: {
+    email: string;
+    name: string;
+    authProvider: "google";
+  }) {
+    const user = await this.usersCollection.findOne({
+      email: userData.email,
+      authProvider: "google",
+    });
+    if (user) {
+      return this.mongoToUser(user);
+    }
+    const now = new Date();
+    const doc = {
+      name: userData.name,
+      email: userData.email,
+      roles: ["user"],
+      authProvider: "google",
+      settings: {
+        language: "en",
+        currency: "USD",
+        notificationPreferences: {
+          email: true,
+          push: false,
+          budgetAlerts: true,
+        },
+      },
+      createdAt: now,
+      updatedAt: now,
+    };
+    const result = await this.usersCollection.insertOne(doc);
+    return this.mongoToUser({ ...doc, _id: result.insertedId });
+  }
 }
