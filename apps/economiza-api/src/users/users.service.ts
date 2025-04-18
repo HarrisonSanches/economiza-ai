@@ -1,7 +1,6 @@
 // users.service.ts
 import {
   Injectable,
-  Inject,
   NotFoundException,
   ConflictException,
 } from "@nestjs/common";
