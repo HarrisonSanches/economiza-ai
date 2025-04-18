@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "outDir": "dist/cjs",
+    // Ensure declaration files are also generated for CJS build if needed,
+    // though the primary 'types' entry will point to ESM declarations.
+    "declaration": true,
+    "declarationMap": true
+  },
+  "include": ["src"]
+  // Exclude can be inherited or specified if needed
+}

@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "dist/esm",
     "rootDir": "src",
-    "declaration": true,
-    "declarationMap": true,
     "sourceMap": true,
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -12,7 +10,11 @@
     "strict": true,
     "skipLibCheck": true,
     "composite": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "declaration": true,           // gera .d.ts
+    "declarationMap": true,        // opcional, útil em debug
+    "emitDeclarationOnly": false, 
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { ExpenseType } from "@economiza/shared/src/types/financial";
+import { ExpenseType } from "@economiza/shared";
 
 export const ExpenseSchema = new Schema(
   {

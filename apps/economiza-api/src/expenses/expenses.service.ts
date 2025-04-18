@@ -6,8 +6,12 @@ import { Expense } from "@economiza/shared/src/types/financial";
 
 @Injectable()
 export class ExpensesService {
+  // @InjectModel('Expense')
+  // private readonly expenseModel: Model<Expense>,
   constructor(
-    @InjectModel("Expense") private readonly expenseModel: Model<Expense>
+    // @InjectModel("Expense") private readonly expenseModel: Model<Expense>
+    @InjectModel("Expense")
+    private readonly expenseModel: Model<Expense>
   ) {}
 
   async findAll(
