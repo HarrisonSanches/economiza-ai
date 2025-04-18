@@ -1,5 +1,8 @@
 version: '3.8'
 services:
+
+  
+
   mongo:
     image: mongo:latest
     container_name: economiza-mongo
@@ -9,13 +12,25 @@ services:
       - mongo_data:/data/db
     networks:
       - economiza-net
+  
+  adminmongo:
+    image: mrvautin/adminmongo
+    container_name: economiza-adminmongo
+    ports:
+      - "1234:1234"
+    environment:
+      - HOST=0.0.0.0
+    depends_on:
+      - mongo
+    networks:
+      - economiza-net
 
   api:
     container_name: economiza-api-dev
     build:
       context: .
       dockerfile: apps/economiza-api/Dockerfile
-      target: development
+      target: deps
     volumes:
       - ./apps/economiza-api:/usr/src/app/apps/economiza-api
       - ./packages/economiza-shared:/usr/src/app/packages/economiza-shared
@@ -35,7 +50,7 @@ services:
     build:
       context: .
       dockerfile: apps/economiza-app/Dockerfile
-      target: development
+      target: deps
     volumes:
       - ./apps/economiza-app:/usr/src/app/apps/economiza-app
       - ./packages/economiza-shared:/usr/src/app/packages/economiza-shared
@@ -55,6 +70,7 @@ services:
     build:
       context: .
       dockerfile: apps/economiza-notifications/Dockerfile
+      target: deps
     volumes:
       - ./apps/economiza-notifications:/usr/src/app/apps/economiza-notifications
       - ./packages/economiza-shared:/usr/src/app/packages/economiza-shared

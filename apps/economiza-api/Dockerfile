@@ -4,10 +4,10 @@ WORKDIR /usr/src/app
 
 # ---- Dependencies ----
 FROM base as deps
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 COPY apps/economiza-api/package.json ./apps/economiza-api/
 COPY packages/economiza-shared/package.json ./packages/economiza-shared/
-RUN bun install --frozen-lockfile --production=false
+RUN bun install
 
 # ---- Build ----
 FROM base as build
