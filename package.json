@@ -19,9 +19,20 @@
     "docker:down": "docker-compose down"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "prettier": "latest",
     "turbo": "latest",
-    "typescript": "5.4.5",
-    "prettier": "latest"
+    "typescript": "5.4.5"
   },
-  "packageManager": "bun@1.2.10"
+  "packageManager": "bun@1.2.10",
+  "dependencies": {
+    "@nestjs/jwt": "^11.0.0",
+    "@nestjs/passport": "^11.0.5",
+    "bcrypt": "^5.1.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "helmet": "^8.1.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1"
+  }
 }
