@@ -1,0 +1,46 @@
+:root {
+  /* Color Palette - Lime */
+  --color-lime-50: #f7fee7;
+  --color-lime-100: #ecfccb;
+  --color-lime-200: #d9f99d;
+  --color-lime-300: #bef264;
+  --color-lime-400: #a3e635;
+  --color-lime-500: #84cc16; /* Primary */
+  --color-lime-600: #65a30d;
+  --color-lime-700: #4d7c0f; /* Secondary */
+  --color-lime-800: #3f6212;
+  --color-lime-900: #365314; /* Danger */
+  --color-lime-950: #1a2e05;
+
+  /* Semantic Roles */
+  --color-primary: var(--color-lime-500);
+  --color-secondary: var(--color-lime-700);
+  --color-accent: var(--color-lime-200);
+  --color-success: var(--color-lime-500);
+  --color-warning: var(--color-lime-300);
+  --color-danger: var(--color-lime-900);
+
+  /* Typography */
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+
+  --font-size-h1: 32px;
+  --font-size-h2: 24px;
+  --font-size-h3: 20px;
+  --font-size-body: 16px;
+  --font-size-small: 14px;
+
+  /* Spacing & Layout */
+  --spacing-base: 4px;
+  --container-max-width: 1200px;
+
+  /* Shapes & Effects */
+  --border-radius: 8px;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.10);
+
+  /* Motion & Interaction */
+  --motion-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-duration-fast: 150ms;
+  --motion-duration-slow: 300ms;
+}
